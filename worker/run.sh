@@ -6,4 +6,4 @@ while read row; do
     shinbun=`echo ${row} | cut -d , -f 1`
     url=`echo ${row} | cut -d , -f 2`
     /work/download.sh $download_date $shinbun $url
-done < urls.csv
+done < /work/urls.csv
