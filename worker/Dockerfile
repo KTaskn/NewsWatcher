@@ -15,8 +15,8 @@ WORKDIR $project_dir
 ADD ./cron.edit /var/spool/cron/crontabs/root
 ADD ./run.sh $project_dir
 ADD ./download.sh $project_dir
-RUN chmod 700 $project_dir/run.sh
-RUN chmod 700 $project_dir/download.sh
+RUN chmod 755 $project_dir/run.sh
+RUN chmod 755 $project_dir/download.sh
 
 ADD ./requirements.txt $project_dir
 
