@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  worker:
+    build: ./worker
+    container_name: seken_worker
+    volumes:
+      - ./worker:/work
+      - ./archives:/archives
+    environment:
+      TZ: "Asia/Tokyo"
+      DIRNAME_ARCHIVES: /archives

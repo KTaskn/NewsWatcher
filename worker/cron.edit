@@ -1,0 +1,25 @@
+#!/bin/sh
+00 0 * * * /work/run.sh
+00 1 * * * /work/run.sh
+00 2 * * * /work/run.sh
+00 3 * * * /work/run.sh
+00 4 * * * /work/run.sh
+00 5 * * * /work/run.sh
+00 6 * * * /work/run.sh
+00 7 * * * /work/run.sh
+00 8 * * * /work/run.sh
+00 9 * * * /work/run.sh
+00 10 * * * /work/run.sh
+00 11 * * * /work/run.sh
+00 12 * * * /work/run.sh
+00 13 * * * /work/run.sh
+00 14 * * * /work/run.sh
+00 15 * * * /work/run.sh
+00 16 * * * /work/run.sh
+00 17 * * * /work/run.sh
+00 18 * * * /work/run.sh
+00 19 * * * /work/run.sh
+00 20 * * * /work/run.sh
+00 21 * * * /work/run.sh
+00 22 * * * /work/run.sh
+00 23 * * * /work/run.sh
