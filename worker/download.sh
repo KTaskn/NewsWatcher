@@ -1,3 +1,4 @@
+DIRNAME_ARCHIVES=/archives
 download_date=$1
 shinbun=$2
 url=$3
