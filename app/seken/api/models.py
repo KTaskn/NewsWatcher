@@ -2,6 +2,7 @@ from django.db import models
 
 class Newspaper(models.Model):
     name = models.CharField(max_length=20)
+    url = models.CharField(max_length=50)
 
 class Word(models.Model):
     newspaper = models.ForeignKey(Newspaper, on_delete=models.CASCADE)

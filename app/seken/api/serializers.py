@@ -5,7 +5,7 @@ from .models import Newspaper, Word
 class NewspaperSerializer(serializers.ModelSerializer):
     class Meta:
         model = Newspaper
-        fields = ('name', )
+        fields = ('name', 'url')
 
 
 class WordSerializer(serializers.ModelSerializer):
