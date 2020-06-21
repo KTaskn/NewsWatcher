@@ -6,7 +6,7 @@ RUN apt-get clean
 
 RUN wget http://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz
 RUN tar Jxf jumanpp-1.02.tar.xz
-RUN cd $project_dir/jumanpp-1.02 && ./configure && make && make install
+RUN cd jumanpp-1.02 && ./configure && make && make install
 
 # タイムゾーン設定
 ARG project_dir=/work
