@@ -1,8 +1,12 @@
 FROM python:3.7
 
 RUN apt-get update
-RUN apt-get install -y busybox-static wget
+RUN apt-get install -y busybox-static wget git build-essential libboost-all-dev nkf
 RUN apt-get clean
+
+RUN wget http://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.02.tar.xz
+RUN tar Jxf jumanpp-1.02.tar.xz
+RUN cd $project_dir/jumanpp-1.02 && ./configure && make && make install
 
 # タイムゾーン設定
 ARG project_dir=/work
@@ -22,6 +26,7 @@ ADD ./requirements.txt $project_dir
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
 
 # busybox crond -f -L /dev/stderr
 CMD ["busybox", "crond", "-f", "-L", "/dev/stderr"]

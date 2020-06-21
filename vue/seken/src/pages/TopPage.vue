@@ -24,7 +24,7 @@ export default {
     }
   },
   mounted () {
-    var today = moment('20200101', 'YYYYMMDD')
+    var today = moment('20200621', 'YYYYMMDD')
     this.get_wordranking(today, {
       'year': today.year(),
       // なぜか0スタート
