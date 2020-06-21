@@ -11,4 +11,10 @@ class NewspaperSerializer(serializers.ModelSerializer):
 class WordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Word
-        fields = ('word', 'newspaper')
+        fields = ('word', 'newspaper', '_datetime')
+
+class WordRankingSerializer(serializers.ModelSerializer):
+    count = serializers.IntegerField()
+    class Meta:
+        model = Word
+        fields = ('word', 'count')
