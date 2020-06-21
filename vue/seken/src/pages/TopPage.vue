@@ -1,38 +1,56 @@
 <template>
   <div class="toppage">
-    <List
-      v-for="ent in mylist"
-      v-bind:key="ent.id"
-      v-bind:input="ent"></List>
+    <WordRankingRow
+    class="datalist"
+    v-for="row in word_ranking_rows"
+    v-bind:key="row.id"
+    v-bind:date="row.date"
+    v-bind:words="row.words"></WordRankingRow>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
+
 import Global from '@/global/index'
-import List from '@/components/List'
+import WordRankingRow from '@/components/WordRankingRow'
 
 export default {
   name: 'TopPage',
   data () {
     return {
-      mylist: [
+      word_ranking_rows: [
       ]
     }
   },
   mounted () {
-    this.get_newspaper()
+    var today = moment('20200101', 'YYYYMMDD')
+    this.get_wordranking(today, {
+      'year': today.year(),
+      // なぜか0スタート
+      'month': today.month() + 1,
+      'date': today.date(),
+      'limit': 5
+    })
   },
   components: {
-    List
+    WordRankingRow
   },
   methods: {
-    get_newspaper (data = {}) {
-      var url = '/newspapers/'
+    get_wordranking (date, data = {}) {
+      var url = '/wordranking/'
       return Global.get_wrapper(
         url,
         data
       ).then((res) => {
-        this.mylist = res.data.results
+        var tmp = {
+          'date': date,
+          'words': []
+        }
+        res.data.results.forEach((ent) => {
+          tmp.words.push(ent)
+        })
+        this.word_ranking_rows.push(tmp)
       })
     }
   }
@@ -43,16 +61,5 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

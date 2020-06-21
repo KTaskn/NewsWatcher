@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from django.db.models import Count
@@ -23,7 +23,7 @@ class WordRankingViewSet(viewsets.ModelViewSet):
 
     def handle_exception(self, exc):
         try:
-            return super(self.__class__, self).handle_exception(exc)
+            return self.super(self.__class__, self).handle_exception(exc)
         except Exception:
             if len(exc.args) > 0:
                 content = {'error': '{}'.format(exc.args[0])}
@@ -36,13 +36,13 @@ class WordRankingViewSet(viewsets.ModelViewSet):
         queryset = Word.objects.all()
         year = self.request.query_params.get('year', None)
         month = self.request.query_params.get('month', None)
-        day = self.request.query_params.get('day', None)
+        date = self.request.query_params.get('date', None)
 
-        if year and month and day:
+        if year and month and date:
             try:
-                a_date = date(int(year), int(month),  int(day))
+                a_date = datetime.date(int(year), int(month), int(date))
             except ValueError as ex:
-                raise ex.__class__("指定した日付に問題があります %s-%s-%s" % (year, month, day))
+                raise ex.__class__("指定した日付に問題があります %s-%s-%s" % (year, month, date))
 
             try:
                 try:
@@ -55,4 +55,4 @@ class WordRankingViewSet(viewsets.ModelViewSet):
             except ValueError as ex:
                 raise ex
         else:
-            raise ValueError("year, month, dayパラメータを付与する必要があります")
+            raise ValueError("year, month, dateパラメータを付与する必要があります")
