@@ -4,3 +4,4 @@ djangorestframework==3.11.0
 django-filter==2.3.0
 django-extensions==2.2.9
 pyknp==0.4.1
+beautifulsoup4==4.9.1
